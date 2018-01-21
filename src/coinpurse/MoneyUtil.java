@@ -40,19 +40,24 @@ public class MoneyUtil {
 	}
 
 	/**
+	 * Sort the coins by their value.
 	 * 
 	 * @param coins
+	 *            is the list of the coin.
 	 */
 	public static void sortCoins(List<Coin> coins) {
 		java.util.Collections.sort(coins);
 	}
 
-/**
- * 
- * @param coins
- * @param currency
- * @return
- */
+	/**
+	 * Filter the coin by use their currency.
+	 * 
+	 * @param coins
+	 *            is the list of coin with different value.
+	 * @param currency
+	 *            is the currency that used
+	 * @return list of the coin with the same currency.
+	 */
 	public static List<Coin> filterByCurrency(List<Coin> coins, String currency) {
 		List<Coin> filter = new ArrayList<Coin>();
 		for (Coin coin : coins) {

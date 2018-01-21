@@ -112,15 +112,16 @@ public class Purse {
 		 */
 		List<Coin> temporarylist = new ArrayList<Coin>();
 		Collections.sort(money);
+		Collections.reverse(money);
 
 		// Did we get the full amount?
 		// This code assumes you decrease amount each time you remove a coin.
 		// Your code might use some other variable for the remaining amount to withdraw.
 		double amountNeededToWithdraw = amount;
 		for (Coin coin : money) {
-			if (amount >= coin.getValue()) {
-				temporarylist.add(coin);
+			if (amountNeededToWithdraw >= coin.getValue()) {
 				amountNeededToWithdraw -= coin.getValue();
+				temporarylist.add(coin);
 			}
 			if (amountNeededToWithdraw == 0)
 				break;

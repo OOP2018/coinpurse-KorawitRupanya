@@ -114,15 +114,13 @@ public class Purse {
 			if (amountNeededToWithdraw == 0)
 				break;
 		}
+		if (amountNeededToWithdraw != 0) {
+			return null;
+		}
+
 		for (Coin coin : temporarylist) {
 			money.remove(coin);
 		}
-		if (amountNeededToWithdraw != 0)
-			return null;
-		{
-
-		}
-
 		Coin[] getArray = new Coin[temporarylist.size()];
 		return temporarylist.toArray(getArray);
 	}

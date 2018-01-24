@@ -21,10 +21,15 @@ public class MoneyUtil {
 		coins.add(new Coin(1.0, "Rupie"));
 		coins.add(new Coin(0.5, "Bath"));
 		coins.add(new Coin(-0.5, "Bath"));
+		System.out.println("List of coins:");
 		printCoins(coins);
-		System.out.println();
+		System.out.println("\nSort coins:");
 		sortCoins(coins);
 		printCoins(coins);
+		
+		System.out.println("\nTest filter:");
+		List<Coin> testfilter = filterByCurrency(coins,"Bath");
+		printCoins( testfilter);
 	}
 
 	/**

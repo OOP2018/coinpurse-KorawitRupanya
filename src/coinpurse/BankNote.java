@@ -1,28 +1,31 @@
 package coinpurse;
 
 /**
- * Insert a Money by the currency and value that cannot be changed after the
- * money is created.The Money can be compared to other money.
+ * Insert a BankNote by the currency and value that cannot be changed after the
+ * BankNote is created.The BankNote can be compared to other money.
  * 
  * @author Korawit Rupanya
  *
  */
-public class Coin implements Comparable<Coin>, Valuable {
+
+public class BankNote implements Valuable {
+	private long nextSerialNumber = 1000000;
 	private double value;
 	private String currency;
+	private long serialNumber;
 
 	/***
-	 * Get the value as it not to be negative.
+	 * Get the value and the currency.
 	 * 
 	 * @param value
 	 *            is value of the money.
 	 * @param currency
 	 *            is the currency of the money.
 	 */
-	public Coin(double value, String currency) {
-		if (value > 0)
-			this.value = value;
+	public BankNote(double value, String currency) {
+		this.value = value;
 		this.currency = currency;
+		this.serialNumber = nextSerialNumber++;
 	}
 
 	/**
@@ -44,6 +47,15 @@ public class Coin implements Comparable<Coin>, Valuable {
 	}
 
 	/**
+	 * Get the serialNumber of any BankNote.
+	 * 
+	 * @return serialNumber of the bank note.
+	 */
+	public long getSerialnumber() {
+		return serialNumber;
+	}
+
+	/**
 	 * Compares the two object
 	 * 
 	 * @param arg
@@ -58,27 +70,8 @@ public class Coin implements Comparable<Coin>, Valuable {
 			return false;
 		if (this.getClass() != arg.getClass())
 			return false;
-		Coin other = (Coin) arg;
+		BankNote other = (BankNote) arg;
 		return other.getValue() == this.getValue() && other.getCurrency().equals(this.getCurrency());
-	}
-
-	/**
-	 * Compares the value of two object by getValue
-	 * 
-	 * @param coin
-	 *            which is used to compared with value with another value.
-	 * @return 1 if the money is over another value -1 if the money is less than
-	 *         another value. 0 if the money is equal to another value.
-	 */
-	@Override
-	public int compareTo(Coin coin) {
-		if (this.getValue() > coin.getValue())
-			return 1;
-		if (this.getValue() < coin.getValue())
-			return -1;
-		if (this.getValue() == coin.getValue())
-			return 0;
-		return 0;
 	}
 
 	/**
@@ -86,9 +79,7 @@ public class Coin implements Comparable<Coin>, Valuable {
 	 * 
 	 * @return value and currency of the money.
 	 */
-	@Override
 	public String toString() {
-		return String.format("%.2f-%s", value, currency);
-
+		return String.format("%.2f-%s note [%d]", this.value, this.currency, this.serialNumber);
 	}
 }

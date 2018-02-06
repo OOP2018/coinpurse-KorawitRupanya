@@ -10,16 +10,18 @@ public class ValueComparator implements Comparator<Valuable> {
      * @return boolean compare 
      */
 	
-	public int compare(Valuable x,Valuable y) {
-		if(x.getCurrency().equals(y.getCurrency())) {
-			if(x.getValue()>y.getValue()) {
+	public int compare(Valuable x, Valuable y) {
+		if (x.getCurrency().equals(y.getCurrency())) {
+			if (x.getValue() == y.getValue()) {
+				return 0;
+			}
+			if (x.getValue() > y.getValue()) {
 				return 1;
 			}
-			else if(x.getValue()<y.getValue()) {
+			if (x.getValue() < y.getValue()) {
 				return -1;
 			}
-			else return 0;
 		}
-		else return 0;
+		return 1;
 	}
 }

@@ -22,6 +22,11 @@ public class Purse {
 	private final int capacity;
 
 	/**
+	 * Create the instance of comparator once.
+	 */
+	private static Comparator<Valuable> comparator = new ValueComparator();
+	
+	/**
 	 * Create a purse with a specified capacity.
 	 * 
 	 * @param capacity
@@ -102,9 +107,9 @@ public class Purse {
 		if (amount <= 0 || getBalance() < amount)
 			return null;
 
+		money.sort(comparator);
 		List<Valuable> temporarylist = new ArrayList<Valuable>();
-		Comparator<Valuable> comp = new ValueComparator();
-		Collections.sort(money,comp);
+		
 		Collections.reverse(money);
 
 		double amountNeededToWithdraw = amount;

@@ -34,7 +34,7 @@ public class PurseTest {
 
 	/** Make a coin with the default currency. To save typing "new Coin(...)" */
 	private Valuable makeCoin(double value) {
-		return new BankNote(value, CURRENCY);
+		return new Coin(value, CURRENCY);
 	}
 
 	/** Easy test that the Purse constructor is working. */

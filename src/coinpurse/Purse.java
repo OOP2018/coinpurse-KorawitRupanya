@@ -131,6 +131,36 @@ public class Purse {
 		Valuable[] getArray = new Valuable[temporarylist.size()];
 		return temporarylist.toArray(getArray);
 	}
+	
+	public Valuable[] withdraw(Valuable amount) {
+		if(amount == null || amount.getValue()<0) 
+			return null;
+			money.sort(comparator);
+			List<Valuable> temporarylist = new ArrayList<Valuable>();
+			Collections.reverse(money);
+
+			double amountNeededToWithdraw = amount.getValue();
+			String amountCurrency = amount.getCurrency();
+			for (Valuable v : money) {
+				if(amount.getCurrency().equals(v.getCurrency())) {
+				if (amountNeededToWithdraw >= v.getValue()) {
+					amountNeededToWithdraw -= v.getValue();
+					temporarylist.add(v);
+				}}
+				if (amountNeededToWithdraw == 0)
+					break;
+			}
+			if (amountNeededToWithdraw != 0) {
+				return null;
+			}
+			
+			for (Valuable value : temporarylist) {
+				money.remove(value);
+			}
+			Valuable[] getArray = new Valuable[temporarylist.size()];
+			return temporarylist.toArray(getArray);
+		}
+	
 
 	/**
 	 * toString returns a string description of the purse contents. It can return

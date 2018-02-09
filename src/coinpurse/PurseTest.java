@@ -186,6 +186,18 @@ public class PurseTest {
 		purse.insert(makeCoin(20)); // now it has 20 + 20
 		assertNull(purse.withdraw(30));
 	}
+	
+	public void testWithdraw() {
+		Purse purse = new Purse(10);
+		Money twenty = new BankNote(20,"Baht");
+		Money fifthy = new BankNote(50,"Yen");
+		Money onehundred = new BankNote(100,"Dollars");
+		purse.insert(twenty);
+		purse.insert(fifthy);
+		purse.insert(onehundred);
+		assertNull(purse.withdraw(1));
+		
+	}
 
 	/**
 	 * Sum the value of some coins.

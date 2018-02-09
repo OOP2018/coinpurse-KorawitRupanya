@@ -1,7 +1,11 @@
 package coinpurse;
-
 import java.util.Comparator;
 
+/**
+ * Compare the value of two object.
+ * @author Korawit Rupanya
+ *
+ */
 public class ValueComparator implements Comparator<Valuable> {
 	/**
      * Compare two objects that implement Valuable.

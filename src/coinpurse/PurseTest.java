@@ -187,6 +187,10 @@ public class PurseTest {
 		assertNull(purse.withdraw(30));
 	}
 	
+	/**
+	 * Test withdraw method
+	 */
+	@Test(timeout = 1000)
 	public void testWithdraw() {
 		Purse purse = new Purse(10);
 		Money twenty = new BankNote(20,"Baht");
@@ -195,8 +199,29 @@ public class PurseTest {
 		purse.insert(twenty);
 		purse.insert(fifthy);
 		purse.insert(onehundred);
-		assertNull(purse.withdraw(1));
+		assertEquals(170,purse.getBalance(),TOL);
 		
+	}
+	
+	/**
+	 * Test equals method.
+	 */
+	@Test(timeout = 1000)
+	public void testEquals() {
+		Valuable c = new Coin(10,"Baht");
+		Valuable d = new Coin(5,"Baht");
+		Valuable e = new Coin(10,"Baht");
+		Valuable f = new Coin(10,"Yen");
+		Valuable g = new BankNote(100,"Dollar");
+		Valuable h = new BankNote(100,"Dollar");
+		Valuable i = new BankNote(50,"Yuan");
+		Valuable j = new BankNote(20,"Dollar");
+		assertFalse(c.equals(d));
+		assertTrue(c.equals(e));
+		assertFalse(c.equals(f));
+		assertTrue(g.equals(h));
+		assertFalse(g.equals(i));
+		assertFalse(g.equals(j));
 	}
 
 	/**

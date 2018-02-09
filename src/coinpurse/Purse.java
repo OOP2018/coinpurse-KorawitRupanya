@@ -132,6 +132,7 @@ public class Purse {
 		return temporarylist.toArray(getArray);
 	}
 	
+	
 	public Valuable[] withdraw(Valuable amount) {
 		if(amount == null || amount.getValue()<0) 
 			return null;

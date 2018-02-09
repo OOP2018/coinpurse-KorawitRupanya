@@ -9,7 +9,7 @@ package coinpurse;
  */
 
 public class BankNote implements Valuable {
-	private long nextSerialNumber = 1000000;
+	private static long nextSerialNumber = 1000000;
 	private double value;
 	private String currency;
 	private long serialNumber;

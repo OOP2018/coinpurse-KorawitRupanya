@@ -30,7 +30,7 @@ public class Purse {
 	 * Create a purse with a specified capacity.
 	 * 
 	 * @param capacity
-	 *            is maximum number of coins you can put in purse.
+	 *            is maximum number of money you can put in purse.
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
@@ -38,8 +38,8 @@ public class Purse {
 	}
 
 	/**
-	 * Count and return the number of coins in the purse. This is the number of
-	 * coins, not their value.
+	 * Count and return the number of money in the purse. This is the number of
+	 * money, not their value.
 	 * 
 	 * @return the number of coins in the purse
 	 */
@@ -61,7 +61,7 @@ public class Purse {
 	}
 
 	/**
-	 * Return the capacity of the coin purse.
+	 * Return the capacity of the purse.
 	 * 
 	 * @return the capacity
 	 */
@@ -80,12 +80,12 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a coin into the purse. The coin is only inserted if the purse has
-	 * space for it and the coin has positive value. No worthless coins!
+	 * Insert money into the purse. The Money is only inserted if the purse has
+	 * space for it and the money has positive value. No worthless moneys!
 	 * 
-	 * @param coin
-	 *            is a Coin object to insert into purse
-	 * @return true if coin inserted, false if can't insert
+	 * @param Valuable
+	 *            is a Valuable object to insert into purse
+	 * @return true if Valuable inserted, false if can't insert
 	 */
 	public boolean insert(Valuable moneyInsert) {
 		if (isFull() || moneyInsert.getValue() <= 0)
@@ -95,54 +95,26 @@ public class Purse {
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins withdrawn
-	 * from purse, or return null if cannot withdraw the amount requested.
-	 * 
-	 * @param amount
-	 *            is the amount to withdraw
-	 * @return array of Coin objects for money withdrawn, or null if cannot withdraw
+	 * Withdraw the requested amount of money that have same currency as the parameter.
+	 * Return an array of Valuables withdrawn from purse, or return null if cannot
+	 * withdraw the amount requested.
+	 * @param amount is the amount to withdraw
+	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
 	 *         requested amount.
 	 */
-	public Valuable[] withdraw(double amount) {
-		if (amount <= 0 || getBalance() < amount)
-			return null;
-
-		money.sort(comparator);
-		List<Valuable> temporarylist = new ArrayList<Valuable>();
-		
-		Collections.reverse(money);
-
-		double amountNeededToWithdraw = amount;
-		for (Valuable v : money) {
-			if (amountNeededToWithdraw >= v.getValue()) {
-				amountNeededToWithdraw -= v.getValue();
-				temporarylist.add(v);
-			}
-			if (amountNeededToWithdraw == 0)
-				break;
-		}
-		if (amountNeededToWithdraw != 0) {
-			return null;
-		}
-
-		for (Valuable value : temporarylist) {
-			money.remove(value);
-		}
-		Valuable[] getArray = new Valuable[temporarylist.size()];
-		return temporarylist.toArray(getArray);
-	}
-	
-	
 	public Valuable[] withdraw(Valuable amount) {
-		if(amount == null || amount.getValue()<0) 
-			return null;
 			money.sort(comparator);
-			List<Valuable> temporarylist = new ArrayList<Valuable>();
 			Collections.reverse(money);
 
+			List<Valuable> temporarylist = new ArrayList<Valuable>();
 			double amountNeededToWithdraw = amount.getValue();
+			
+			if(amount == null || amount.getValue()<1||amountNeededToWithdraw < 0 || money.size() == 0
+					|| this.getBalance() < amountNeededToWithdraw)
+				return null;
+			
 			for (Valuable v : money) {
-				if(amount.getCurrency().equals(v.getCurrency())&&amount.getClass()==v.getClass()) {
+				if(amount.getCurrency().equals(v.getCurrency())) {
 				if (amountNeededToWithdraw >= v.getValue()) {
 					amountNeededToWithdraw -= v.getValue();
 					temporarylist.add(v);
@@ -161,6 +133,19 @@ public class Purse {
 			return temporarylist.toArray(getArray);
 		}
 	
+	/**
+	 * Withdraw the requested amount of money with default currency "Baht". 
+	 * Return an array of Valuables withdrawn
+	 * from purse, or return null if cannot withdraw the amount requested.
+	 * 
+	 * @param amount
+	 *            is the amount to withdraw
+	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
+	 *         requested amount.
+	 */
+	public Valuable[] withdraw(double amount) {
+		return withdraw(new Money(amount,"Baht"));
+	}
 
 	/**
 	 * toString returns a string description of the purse contents. It can return
@@ -169,5 +154,4 @@ public class Purse {
 	public String toString() {
 		return String.format("You have %d coins with related to the value of %.2f", this.count(), this.getBalance());
 	}
-
 }

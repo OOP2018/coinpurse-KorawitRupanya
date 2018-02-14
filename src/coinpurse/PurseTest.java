@@ -223,6 +223,21 @@ public class PurseTest {
 		assertFalse(g.equals(i));
 		assertFalse(g.equals(j));
 	}
+	
+	@Test(timeout=100)
+	 public void testWithdrawSpecificCurrecy(){
+	  		Purse purse2 = new Purse(3);
+	  		Money note50 = new Money(50,"Baht");
+	  		Money note20 = new Money(20,"Yen");
+	  		purse2.withdraw(note20);
+	  		//Cannot withdraw because currency is in Yen.
+	  		assertEquals(120, purse2.getBalance(), TOL);
+	 
+	 		//External test.
+	 		purse2.insert(note50);
+	 		purse2.withdraw(new Money(150, "Baht"));
+	 		assertEquals(20, purse2.getBalance(), TOL);
+	  	}
 
 	/**
 	 * Sum the value of some coins.

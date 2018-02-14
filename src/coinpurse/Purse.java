@@ -152,6 +152,6 @@ public class Purse {
 	 * whatever is a useful description.
 	 */
 	public String toString() {
-		return String.format("You have %d coins with related to the value of %.2f", this.count(), this.getBalance());
+		return String.format("You have %d valuable with related to the value of %.2f", this.count(), this.getBalance());
 	}
 }

@@ -30,8 +30,8 @@ public class BankNote extends Money {
 	 * 
 	 * @return serialNumber of the bank note.
 	 */
-	public long getSerialnumber() {
-		return serialNumber;
+	public long getSerial() {
+		return this.serialNumber;
 	}
 
 	/**

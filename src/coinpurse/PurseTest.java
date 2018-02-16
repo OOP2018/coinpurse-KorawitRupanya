@@ -22,7 +22,7 @@ import org.junit.Test;
 public class PurseTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
-	private static final String CURRENCY = "BTC";
+	private static final String CURRENCY = "Baht";
 
 	/**
 	 * Sets up the test fixture. Called before every test method.
@@ -227,16 +227,20 @@ public class PurseTest {
 	@Test(timeout=100)
 	 public void testWithdrawSpecificCurrecy(){
 	  		Purse purse2 = new Purse(3);
-	  		Money note50 = new Money(50,"Baht");
-	  		Money note20 = new Money(20,"Yen");
-	  		purse2.withdraw(note20);
+	  		Money note20 = new Money(20,"Baht");
+	  		Money note50 = new Money(50,"Yen");
+	  		Money note100 = new Money(100,"Baht");
+	  		purse2.insert(note100);
+	  		purse2.insert(note50);
+	  		purse2.withdraw(50);
+	  		
 	  		//Cannot withdraw because currency is in Yen.
-	  		assertEquals(120, purse2.getBalance(), TOL);
-	 
+	  		assertEquals(150, purse2.getBalance(), TOL);
+	  		
 	 		//External test.
-	 		purse2.insert(note50);
-	 		purse2.withdraw(new Money(150, "Baht"));
-	 		assertEquals(20, purse2.getBalance(), TOL);
+	 		purse2.insert(note20);
+	 		purse2.withdraw(new Money(120, "Baht"));
+	 		assertEquals(50, purse2.getBalance(), TOL);
 	  	}
 
 	/**

@@ -26,7 +26,7 @@ public class BankNote extends Money {
 		if(currency.equals("Ringgit")) {
 			this.serialNumber= nextSerialNumberMalai++;
 		}
-		if(currency.equals("Bant")) {
+		if(currency.equals("Baht")) {
 			this.serialNumber=nextSerialNumberThai++;
 		}
 	}

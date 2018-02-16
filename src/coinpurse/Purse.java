@@ -109,7 +109,7 @@ public class Purse {
 			List<Valuable> temporarylist = new ArrayList<Valuable>();
 			double amountNeededToWithdraw = amount.getValue();
 			
-			if(amount == null || amount.getValue()<1||amountNeededToWithdraw < 0 || money.size() == 0
+			if(amount == null || amount.getValue() < 0||amountNeededToWithdraw < 0 || money.size() == 0
 					|| this.getBalance() < amountNeededToWithdraw)
 				return null;
 			

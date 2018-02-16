@@ -126,11 +126,12 @@ public class ConsoleDialog {
     /** Make a Coin (or BankNote or whatever) using requested value. */
     private Valuable makeMoney(double value) {
    MoneyFactory m = MoneyFactory.getInstance();
+   Valuable val = null;
     	try {
-    		 return m.createMoney(value);
+    		 val =  m.createMoney(value);
     	}catch(IllegalArgumentException ex) {
     		System.out.println("Sorry,"+value+" is not a valid amount.");
     	}
-    	return null;
+    	return val;
     }
 }

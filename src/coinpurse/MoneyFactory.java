@@ -8,8 +8,10 @@ package coinpurse;
 
 public abstract class MoneyFactory {
 
+	/** */
 	private static MoneyFactory instance = null;
 	
+	/** */
 	protected MoneyFactory() {
 	}
 	

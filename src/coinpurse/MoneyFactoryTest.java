@@ -11,8 +11,6 @@ import org.junit.Test;
  */
 
 public class MoneyFactoryTest {
-	/** tolerance for comparing two double values */
-	private static final double TOL = 1.0E-6;
 	/**Thai currency*/
 	private final String BAHT = "Baht";
 	/**malay currency*/

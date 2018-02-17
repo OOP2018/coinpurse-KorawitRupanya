@@ -8,10 +8,9 @@ package coinpurse;
 
 public abstract class MoneyFactory {
 
-	/** */
+	/**initial the instance of MoneyFactory*/
 	private static MoneyFactory instance = null;
 	
-	/** */
 	protected MoneyFactory() {
 	}
 	
@@ -25,21 +24,26 @@ public abstract class MoneyFactory {
 		}
 		return instance;
 	}
+	
 	/**
-	 * create new money object in the local currency.
+	 * Create new money object in the local currency.
 	 * If the value is not a valid currency amount,then throw IllegalArgumentException.
-	 * @param value 
-	 * @return
+	 * @param value is amount of money to create.
+	 * @return valuable that can be coins or money.
 	 */
 	public abstract Valuable createMoney(double value) ;
-		
+	
+	/**
+	 * Get the currency of a subclass
+	 * @return currency of a subclass
+	 */
 	public abstract String getCurrency();
 	
 	/**
-	 * create new money object in the local currency.
-	 * If the value is not a valid currency amount,then throw IllegalArgumentException.
-	 * @param value
-	 * @return
+	 * Accepts money value as a String,
+	 * Throws: IllegalArgumentException if value of string is not a number.
+	 * @param value is amount of money to create.
+	 * @return valuable that can be coins or money.
 	 */
 	public Valuable createMoney(String value) {
 		double moneyValue = 0;
@@ -52,6 +56,11 @@ public abstract class MoneyFactory {
 	    return createMoney(moneyValue);
 	}
 	
+	/**
+	 * Static method to a "set" the MoneyFactory object that is used.
+	 * This is mostly for testing of MoneyFactory.
+	 * @param f is instance of MoneyFactory to choose what Factory.
+	 */
 	public static void setFactory(MoneyFactory f) {
 		instance = f;
 	}

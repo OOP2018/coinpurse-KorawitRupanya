@@ -9,7 +9,7 @@ package coinpurse;
  */
 
 public class BankNote extends Money {
-	/**The serial number of bank note that is separate by the currency */
+	/** The serial number of bank note that is separate by the currency */
 	private static long nextSerialNumberThai = 1000000;
 	private static long nextSerialNumberMalay = 1000000;
 	private long serialNumber;
@@ -23,12 +23,12 @@ public class BankNote extends Money {
 	 *            is the currency of the money.
 	 */
 	public BankNote(double value, String currency) {
-		super(value,currency);
-		if(currency.equals("Ringgit")) {
-			this.serialNumber= nextSerialNumberMalay++;
+		super(value, currency);
+		if (currency.equals("Ringgit")) {
+			this.serialNumber = nextSerialNumberMalay++;
 		}
-		if(currency.equals("Baht")) {
-			this.serialNumber=nextSerialNumberThai++;
+		if (currency.equals("Baht")) {
+			this.serialNumber = nextSerialNumberThai++;
 		}
 	}
 

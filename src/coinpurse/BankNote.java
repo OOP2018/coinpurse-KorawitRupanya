@@ -10,7 +10,7 @@ package coinpurse;
 
 public class BankNote extends Money {
 	private static long nextSerialNumberThai = 1000000;
-	private static long nextSerialNumberMalai = 1000000;
+	private static long nextSerialNumberMalay = 1000000;
 	private long serialNumber;
 
 	/***
@@ -24,7 +24,7 @@ public class BankNote extends Money {
 	public BankNote(double value, String currency) {
 		super(value,currency);
 		if(currency.equals("Ringgit")) {
-			this.serialNumber= nextSerialNumberMalai++;
+			this.serialNumber= nextSerialNumberMalay++;
 		}
 		if(currency.equals("Baht")) {
 			this.serialNumber=nextSerialNumberThai++;

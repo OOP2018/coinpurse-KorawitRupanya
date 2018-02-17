@@ -3,12 +3,19 @@ package coinpurse;
 public class MoneyFactoryDemo{
 
 	public static void main(String[] args) {
-		testMoneyFactory();
+		System.out.println("Test for Thai money factory");
+		testThaiMoneyFactory();
+		System.out.println();
+		System.out.println("Test for Malay money factory");
+		System.out.println();
+		testMalayMoneyFactory();
+		System.out.println();
+		System.out.println("Test for invalid value for money factory(thaifactory)");
+		testNotvalidValue();
 	
 }
-	public static void testMoneyFactory(){
-		
-		//Test for Thai money factory
+	
+	public static void testThaiMoneyFactory(){
 		MoneyFactory f1 = MoneyFactory.getInstance();
 		System.out.println("f1 is a + "+f1.getClass().getName());
 		MoneyFactory f2 = MoneyFactory.getInstance();
@@ -19,7 +26,7 @@ public class MoneyFactoryDemo{
 		String [] coins = {"1","2","5","10"};
 		String [] banknotes = {"20","50","100","500","1000"};
 		for(String arg : coins) {
-			System.out.printf("create Money (%s) is",arg);
+			System.out.printf("create Money (%s) is ",arg);
 			try {
 				Valuable v = f1.createMoney(arg);
 				System.out.println(v.toString());
@@ -29,7 +36,7 @@ public class MoneyFactoryDemo{
 	}
 		
 		for(String arg : banknotes) {
-			System.out.printf("create Money (%s) is",arg);
+			System.out.printf("create Money (%s) is ",arg);
 			try {
 				Valuable v = f1.createMoney(arg);
 				System.out.println(v.toString());
@@ -37,9 +44,9 @@ public class MoneyFactoryDemo{
 				System.out.println(ex.getMessage());
 			}
 	}
-		
-		//Test for Malai money factory
-		MoneyFactory.setFactory(new MalaiMoneyFactory());
+	}
+		public static void testMalayMoneyFactory() {
+		MoneyFactory.setFactory(new MalayMoneyFactory());
 		MoneyFactory f3 = MoneyFactory.getInstance();
 		System.out.println("f1 is a + "+f3.getClass().getName());
 		MoneyFactory f4 = MoneyFactory.getInstance();
@@ -47,10 +54,10 @@ public class MoneyFactoryDemo{
 		System.out.println("f1 == f2 (same object ?)");
 		System.out.println(f3==f4);
 	
-		String [] coins1 = {"1","2","5","10"};
-		String [] banknotes1 = {"20","50","100","500","1000"};
+		String [] coins1 = {"0.05","0.10","0.20","1","2","5","10"};
+		String [] banknotes1 = {"20","50","100"};
 		for(String arg : coins1) {
-			System.out.printf("create Money (%s) is",arg);
+			System.out.printf("create Money (%s) is ",arg);
 			try {
 				Valuable v = f3.createMoney(arg);
 				System.out.println(v.toString());
@@ -60,7 +67,7 @@ public class MoneyFactoryDemo{
 	}
 		
 		for(String arg : banknotes1) {
-			System.out.printf("create Money (%s) is",arg);
+			System.out.printf("create Money (%s) is ",arg);
 			try {
 				Valuable v = f4.createMoney(arg);
 				System.out.println(v.toString());
@@ -68,7 +75,20 @@ public class MoneyFactoryDemo{
 				System.out.println(ex.getMessage());
 			}
 	}
-		
-		
-	}}
+	}
 
+		public static void testNotvalidValue() {
+			MoneyFactory.setFactory(new ThaiMoneyFactory());
+			MoneyFactory f4 = MoneyFactory.getInstance();
+			String [] invalidcoin  = {"60","100","0","34","75"};
+			for(String arg : invalidcoin) {
+				System.out.printf("create Money (%s) is ",arg);
+				try {
+					Valuable v = f4.createMoney(arg);
+					System.out.println(v.toString());
+				}catch(IllegalArgumentException ex) {
+					System.out.println(ex.getMessage());
+				}
+		}
+		}
+}

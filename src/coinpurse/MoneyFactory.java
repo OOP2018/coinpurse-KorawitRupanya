@@ -19,9 +19,10 @@ public abstract class MoneyFactory {
 	public Valuable createMoney(String value) {
 		double moneyValue = 0;
 	    try {
-	       moneyValue = Double.parseDouble( value );
-	    } catch (IllegalArgumentException ex) {
-	    		System.out.println("The input doesn't contain number");
+	       moneyValue = Double.parseDouble(value);
+	    } catch (Exception ex) {
+	    		System.out.printf("The input %s is not a valid currency value%n",value); 
+	    		throw new IllegalArgumentException();
 	    }
 	    return createMoney(moneyValue);
 	}

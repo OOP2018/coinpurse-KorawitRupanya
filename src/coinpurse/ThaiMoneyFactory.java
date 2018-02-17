@@ -8,10 +8,10 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		if(coin(value)) {
 			return new Coin(value,"Baht");
 			}
-		if(bank(value)) {
+		else if(bank(value)) {
 			return new BankNote(value,"Baht");
 		}
-		return null;
+		else throw new IllegalArgumentException("Sorry,Thailand doesn't have this value of banknote or coin.");
 	}
 	
 	public boolean coin(double value) {

@@ -1,16 +1,16 @@
 package coinpurse;
 
-public class MalaiMoneyFactory extends MoneyFactory {
+public class MalayMoneyFactory extends MoneyFactory {
 	
 	@Override
 	public Valuable createMoney(double value) {
 		if(coin(value)) {
-			return new Coin (value*100,"Sen");
+			return new Coin (value,"Ringgit");
 		}
 		if(bank(value)) {
 			return new BankNote(value,"Ringgit");
 		}
-		return null;
+		throw new IllegalArgumentException("Sorry,Malay doesn't have this value of banknote or coin.");
 	}
 
 	public boolean coin(double value) {

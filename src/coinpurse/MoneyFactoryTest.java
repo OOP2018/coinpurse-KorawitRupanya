@@ -25,59 +25,6 @@ public class MoneyFactoryTest {
 	public void setUp() {
 		// nothing to initialize
 	}
-	/**
-	 * Make money by the value as double
-	 * @param value is the value that is used to make money.
-	 * @return the valuable as the money.
-	 */
-	public Valuable makeMoney(double value) {
-		try {
-            return MoneyFactory.getInstance().createMoney(value);
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException();
-        }
-    }
-	/**
-	 * Make money by the value as double.
-	 * @param value is the value that is used to make money.
-	 * @return true if can make money ,false if it can't.
-	 */
-	 public boolean testMakeMoneyByValue(double value){
-        try {
-            makeMoney(value);
-            return true;
-        }catch (IllegalArgumentException e ){
-            return false;
-        }
-    }
-	/**
-	 * Make money by the value as string
-	 * @param value is the value that is used to make money.
-	 * @return the valuable as the money.
-	 */
-	public Valuable makeMoney(String value) {
-		try {
-            return MoneyFactory.getInstance().createMoney(value);
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException();
-        }
-    }
-	/**
-	 * Make money by the value as string.
-	 * @param value is the value that is used to make money.
-	 * @return true if can make money ,false if it can't.
-	 */
-	 public boolean testMakeMoneyByValue(String value){
-        try {
-            makeMoney(value);
-            return true;
-        }catch (IllegalArgumentException e ){
-            return false;
-        }
-    }
-	/**
-	 * Test if the factory can get the instance.
-	 */
 	@Test
 	public void testGetInstance() {
 		MoneyFactory.setFactory(new ThaiMoneyFactory());
@@ -108,10 +55,10 @@ public class MoneyFactoryTest {
     public void testCreateMalayMoney(){
         MoneyFactory.setFactory(new MalayMoneyFactory());
         MoneyFactory m = MoneyFactory.getInstance();
-        assertEquals(new Coin(5,"Sen coin"),m.createMoney(0.05));
-        assertEquals(new Coin(10,"Sen coin"),m.createMoney(0.1));
-        assertEquals(new Coin(20,"Sen coin"),m.createMoney("0.20"));
-        assertEquals(new Coin(50,"Sen coin"),m.createMoney(0.5));
+        assertEquals(new Coin(0.05,"Ringgit"),m.createMoney(0.05));
+        assertEquals(new Coin(0.1,"Ringgit"),m.createMoney(0.1));
+        assertEquals(new Coin(0.20,"Ringgit"),m.createMoney("0.20"));
+        assertEquals(new Coin(0.5,"Ringgit"),m.createMoney(0.5));
         assertEquals(new BankNote(1,RINGGIT),m.createMoney("1"));
         assertEquals(new BankNote(10,RINGGIT),m.createMoney("10"));
         assertEquals(new BankNote(5,RINGGIT),m.createMoney(5));

@@ -9,6 +9,7 @@ package coinpurse;
  */
 
 public class BankNote extends Money {
+	/**The serial number of bank note that is separate by the currency */
 	private static long nextSerialNumberThai = 1000000;
 	private static long nextSerialNumberMalay = 1000000;
 	private long serialNumber;

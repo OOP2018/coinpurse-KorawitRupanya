@@ -8,9 +8,15 @@ import java.util.ResourceBundle;
  * @author Korawit Rupanya
  */
 public class Main {
-
+/**
+ * The Main class creates the MoneyFactory object and then calls MoneyFactory.setFactory(factory) to inject it, 
+ * before starting the user interface.
+ */
 	public static void init() {
+		// create a ResourceBundle from file "purse.properties" on the classpath 
+		// the ".properties" extension is automatically appended to the name
 		ResourceBundle bundle = ResourceBundle.getBundle("purse");
+		// get value of "moneyfactory" property
 		String factoryclass = bundle.getString("moneyfactory");
 		MoneyFactory factory = null;
 		try {
@@ -34,12 +40,13 @@ public class Main {
      * @param args not used
      */
     public static void main( String[] args ) {
+    	    //1.The Main class creates the MoneyFactory object
     	init();
-        // 1. create a Purse
+        // 2. create a Purse
     	Purse purse = new Purse(10);
-        // 2. create a ConsoleDialog with a reference to the Purse object
+        // 3. create a ConsoleDialog with a reference to the Purse object
     	ConsoleDialog ui = new ConsoleDialog(purse);
-        // 3. run the ConsoleDialog
+        // 4. run the ConsoleDialog
     	ui.run();
 
     }

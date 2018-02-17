@@ -29,4 +29,9 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		}
 		return false;
 	}
+
+	@Override
+	public String getCurrency() {
+		return "Baht";
+	}
 }

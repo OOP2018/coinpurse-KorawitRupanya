@@ -28,4 +28,9 @@ public class MalayMoneyFactory extends MoneyFactory {
 		}
 		return false;
 	}
+
+	@Override
+	public String getCurrency() {
+		return "Ringgit";
+	}
 }

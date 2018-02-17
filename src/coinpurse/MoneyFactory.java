@@ -16,6 +16,8 @@ public abstract class MoneyFactory {
 	
 	public abstract Valuable createMoney(double value) ;
 		
+	public abstract String getCurrency();
+	
 	public Valuable createMoney(String value) {
 		double moneyValue = 0;
 	    try {

@@ -18,10 +18,10 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 */
 	@Override
 	public Valuable createMoney(double value) {
-		if (coin(value)) {
+		if (isCoin(value)) {
 			return new Coin(value, "Ringgit");
 		}
-		if (bank(value)) {
+		if (isBank(value)) {
 			return new BankNote(value, "Ringgit");
 		}
 		throw new IllegalArgumentException("Sorry,Malay doesn't have this value of banknote or coin.");
@@ -35,7 +35,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 * @return true if it's in the coin value of Malay currency,if it's not then
 	 *         return false.
 	 */
-	public boolean coin(double value) {
+	private boolean isCoin(double value) {
 		double[] coins = { 0.05, 0.10, 0.20, 0.50 };
 		for (int i = 0; i < coins.length; i++) {
 			if (value == coins[i])
@@ -52,7 +52,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 * @return true if it's in the bank note value of Malay currency,if it's not
 	 *         then return false.
 	 */
-	public boolean bank(double value) {
+	private boolean isBank(double value) {
 		double[] banks = { 1, 2, 5, 10, 20, 50, 100 };
 		for (int i = 0; i < banks.length; i++) {
 			if (value == banks[i])

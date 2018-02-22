@@ -49,9 +49,8 @@ public abstract class MoneyFactory {
 		double moneyValue = 0;
 	    try {
 	       moneyValue = Double.parseDouble(value);
-	    } catch (Exception ex) {
-	    		System.out.printf("The input %s is not a valid currency value%n",value); 
-	    		throw new IllegalArgumentException();
+	    } catch (Exception ex) { 
+	    		throw new IllegalArgumentException("Invalid value",ex);
 	    }
 	    return createMoney(moneyValue);
 	}

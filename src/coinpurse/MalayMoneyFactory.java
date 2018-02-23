@@ -8,6 +8,8 @@ package coinpurse;
  */
 public class MalayMoneyFactory extends MoneyFactory {
 
+	/** The serialNumber of Malay's money */
+	private static long serialNumber = 1000000;
 	/**
 	 * Create new money object in Malay currency. If the value is not a valid
 	 * currency amount,then throw IllegalArgumentException.
@@ -22,7 +24,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 			return new Coin(value, "Ringgit");
 		}
 		if (isBank(value)) {
-			return new BankNote(value, "Ringgit");
+			return new BankNote(value, "Ringgit",serialNumber++);
 		}
 		throw new IllegalArgumentException("Sorry,Malay doesn't have this value of banknote or coin.");
 	}

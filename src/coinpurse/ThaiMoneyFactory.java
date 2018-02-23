@@ -8,6 +8,8 @@ package coinpurse;
  */
 public class ThaiMoneyFactory extends MoneyFactory {
 
+	/** The serialNumber of Thai's money */
+	private static long serialNumber = 1000000;
 	/**
 	 * Create new money object in Thai currency. If the value is not a valid
 	 * currency amount,then throw IllegalArgumentException.
@@ -22,7 +24,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 			return new Coin(value, "Baht");
 		}
 		if (isBank(value)) {
-			return new BankNote(value, "Baht");
+			return new BankNote(value, "Baht",serialNumber);
 		} else
 			throw new IllegalArgumentException("Sorry,Thailand doesn't have this value of banknote or coin.");
 	}

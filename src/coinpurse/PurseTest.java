@@ -65,7 +65,7 @@ public class PurseTest {
 	@Test
 	public void testInsertNoValue() {
 		Purse purse = new Purse(3);
-		Valuable fakeCoin = new BankNote(0, CURRENCY);
+		Valuable fakeCoin = new BankNote(0, CURRENCY,1000000);
 		assertFalse(purse.insert(fakeCoin));
 	}
 
@@ -96,7 +96,7 @@ public class PurseTest {
 		int capacity = 5;
 		double value = 10.0;
 		Purse purse = new Purse(capacity);
-		Valuable v = new BankNote(value, "THB");
+		Valuable v = new BankNote(value, "THB",1000000);
 		assertTrue(purse.insert(v));
 		assertTrue(purse.insert(v)); // should be allowed
 		assertTrue(purse.insert(v)); // should be allowed
@@ -193,9 +193,9 @@ public class PurseTest {
 	@Test(timeout = 1000)
 	public void testWithdraw() {
 		Purse purse = new Purse(10);
-		Money twenty = new BankNote(20,"Baht");
-		Money fifthy = new BankNote(50,"Yen");
-		Money onehundred = new BankNote(100,"Dollars");
+		Money twenty = new BankNote(20,"Baht",1000000);
+		Money fifthy = new BankNote(50,"Yen",1000000);
+		Money onehundred = new BankNote(100,"Dollars",1000000);
 		purse.insert(twenty);
 		purse.insert(fifthy);
 		purse.insert(onehundred);
@@ -212,10 +212,10 @@ public class PurseTest {
 		Valuable d = new Coin(5,"Baht");
 		Valuable e = new Coin(10,"Baht");
 		Valuable f = new Coin(10,"Yen");
-		Valuable g = new BankNote(100,"Dollar");
-		Valuable h = new BankNote(100,"Dollar");
-		Valuable i = new BankNote(50,"Yuan");
-		Valuable j = new BankNote(20,"Dollar");
+		Valuable g = new BankNote(100,"Dollar",1000000);
+		Valuable h = new BankNote(100,"Dollar",1000001);
+		Valuable i = new BankNote(50,"Yuan",1000000);
+		Valuable j = new BankNote(20,"Dollar",1000002);
 		assertFalse(c.equals(d));
 		assertTrue(c.equals(e));
 		assertFalse(c.equals(f));

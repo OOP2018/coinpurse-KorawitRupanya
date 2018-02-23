@@ -10,7 +10,7 @@ public class TestForLab3 {
 		System.out.println(Arrays.toString(p.withdraw(20)));
 		System.out.println(p.getBalance());
 		Purse q = new Purse(50);
-		System.out.println(q.insert(new BankNote(35,"Dollar")));
+		System.out.println(q.insert(new BankNote(35,"Dollar",1000000)));
 		System.out.println(Arrays.toString(q.withdraw(20)));
 	}
 

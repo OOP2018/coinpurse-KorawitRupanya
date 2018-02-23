@@ -46,10 +46,10 @@ public class MoneyFactoryTest {
 		assertEquals(new Coin(2, BAHT), m.createMoney("2"));
 		assertEquals(new Coin(5, BAHT), m.createMoney(5));
 		assertEquals(new Coin(10, BAHT), m.createMoney("10"));
-		assertEquals(new BankNote(20, BAHT), m.createMoney(20));
-		assertEquals(new BankNote(100, BAHT), m.createMoney("100"));
-		assertEquals(new BankNote(500, BAHT), m.createMoney(500));
-		assertEquals(new BankNote(1000, BAHT), m.createMoney("1000"));
+		assertEquals(new BankNote(20, BAHT,1000000), m.createMoney(20));
+		assertEquals(new BankNote(100, BAHT,100001), m.createMoney("100"));
+		assertEquals(new BankNote(500, BAHT,100002), m.createMoney(500));
+		assertEquals(new BankNote(1000, BAHT,100003), m.createMoney("1000"));
 	}
 
 	/** test make Malay money */
@@ -61,12 +61,12 @@ public class MoneyFactoryTest {
 		assertEquals(new Coin(0.1, "Ringgit"), m.createMoney(0.1));
 		assertEquals(new Coin(0.20, "Ringgit"), m.createMoney("0.20"));
 		assertEquals(new Coin(0.5, "Ringgit"), m.createMoney(0.5));
-		assertEquals(new BankNote(1, RINGGIT), m.createMoney("1"));
-		assertEquals(new BankNote(10, RINGGIT), m.createMoney("10"));
-		assertEquals(new BankNote(5, RINGGIT), m.createMoney(5));
-		assertEquals(new BankNote(10, RINGGIT), m.createMoney("10"));
-		assertEquals(new BankNote(20, RINGGIT), m.createMoney(20));
-		assertEquals(new BankNote(50, RINGGIT), m.createMoney("50"));
-		assertEquals(new BankNote(100, RINGGIT), m.createMoney(100));
+		assertEquals(new BankNote(1, RINGGIT,100000), m.createMoney("1"));
+		assertEquals(new BankNote(10, RINGGIT,1000001), m.createMoney("10"));
+		assertEquals(new BankNote(5, RINGGIT,1000002), m.createMoney(5));
+		assertEquals(new BankNote(10, RINGGIT,1000003), m.createMoney("10"));
+		assertEquals(new BankNote(20, RINGGIT,1000004), m.createMoney(20));
+		assertEquals(new BankNote(50, RINGGIT,1000005), m.createMoney("50"));
+		assertEquals(new BankNote(100, RINGGIT,100006), m.createMoney(100));
 	}
 }

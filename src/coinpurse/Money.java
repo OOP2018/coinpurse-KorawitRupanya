@@ -6,6 +6,7 @@ public class Money implements Valuable {
 	protected String currency;
 
 	public Money(double value,String currency) {
+		if(value <= 0) this.value = 0.0;
 		this.value=value;
 		this.currency=currency;
 	}

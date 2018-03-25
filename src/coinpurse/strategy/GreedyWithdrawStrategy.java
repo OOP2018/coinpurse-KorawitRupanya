@@ -1,6 +1,7 @@
 package coinpurse.strategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class GreedyWithdrawStrategy implements WithdrawStrategy {
 		if( amount.getValue() < 0|| amount.getValue() < 0 || money.size() == 0)
 			return null;
 		money.sort(comparator);
+		Collections.reverse(money);
 		double amountNeededToWithdraw = amount.getValue();
 		
 		for (Valuable v : money) {

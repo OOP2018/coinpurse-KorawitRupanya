@@ -71,12 +71,6 @@ public class WithdrawTest  {
 		Valuable v = new Money(5,"Baht");
 		
 		List<Valuable> solution = greed.withdraw(v, money);
-		System.out.println("na");
-		System.out.println(solution==null);
-		System.out.println(solution.size());
-		for(int i=0;i<solution.size();i++){
-		    System.out.println(solution.get(i));
-		} 
 		assertEquals(1,solution.size());
 		assertEquals(new Money(5, "Baht"), solution.get(0));
 		

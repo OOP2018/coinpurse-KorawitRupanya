@@ -6,7 +6,6 @@ public class Money implements Valuable {
 	protected String currency;
 
 	public Money(double value,String currency) {
-		if(value<0) throw new IllegalArgumentException ("Value must be possitive");
 		this.value=value;
 		this.currency=currency;
 	}

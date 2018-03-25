@@ -4,6 +4,12 @@ import java.util.List;
 
 import coinpurse.Valuable;
 
+/**
+ * The withdraw strategy that will advice the withdraw method in the purse class what
+ * to with draw to the user but not change anything to the list .
+ * @author Korawit Rupanya
+ *
+ */
 public interface WithdrawStrategy {
 
 	/**
@@ -15,7 +21,7 @@ public interface WithdrawStrategy {
 	 * 		  This list is not modified.
 	 * @return if a solution is found, return a list containing references
 	 * 		   from the money parameter (List) whose sum equals the amount.
-	 * 		   If a solution is not found, return >>>>.....
+	 * 		   If a solution is not found, return empty list
 	 */
 	public List <Valuable> withdraw (Valuable amount,List<Valuable>money);
 	
